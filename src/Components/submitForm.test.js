@@ -1,1 +1,0 @@
-import submitForm from "./submitForm.js"
