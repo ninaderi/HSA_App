@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 // import logo from './logo.svg';
 import './App.css';
-import { GoogleMap, withScriptjs, withGoogleMap, Marker } from "react-google-maps";
+import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from "react-google-maps";
 import artData from "./data/publicArt.json";
 
 import historical from "./historical.js";
-import showHistorical from "./showhistorical.js"
+import showHistorical from "./showhistorical.js";
 
 
 const list = [
@@ -32,6 +32,9 @@ const list = [
         ]
 
 function Map() {
+  const [selectedPin, setSelectedPin] = useState(null);
+
+
   return (
     <GoogleMap 
       defaultZoom={10} 
@@ -44,8 +47,26 @@ function Map() {
             lat: art.latitude,
             lng: art.longitude 
           }}
+          onClick={() => {
+            setSelectedPin(art);
+          }}
         />
       ))}
+
+     {selectedPin && (
+        <InfoWindow
+          position={{
+                lat: selectedPin.latitude,
+                lng: selectedPin.longitude 
+              }}
+            onCloseClick={() => {
+              setSelectedPin(null);
+            }}
+            >
+          <div>art details</div>
+          </InfoWindow>
+
+      )}
 
     </GoogleMap>
   );
