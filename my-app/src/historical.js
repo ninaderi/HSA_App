@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Cell } from 'react-mdl';
+import { LoadingSpinner } from 'video-react';
 import Showhistorical from './showhistorical';
 
 class Historical extends Component {
@@ -8,15 +9,15 @@ class Historical extends Component {
       <Grid>
         <Cell col={4}>
         
-                 <Showhistorical
+                {/* <Showhistorical
                       video={2019}
                       audio={2019}
                       read="EvolveU"
                       historicalName="Lougheed Calgary"
-                      backgroundImage1="'https://media.mydriveholiday.com/pages/501/Lougheed%20House%20(1).jpg'"/>
+                      backgroundImage1="'https://media.mydriveholiday.com/pages/501/Lougheed%20House%20(1).jpg'"/> */}
         </Cell>
+       
         <Cell col={8}>
-        
         </Cell>
       </Grid>
     )

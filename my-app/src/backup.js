@@ -20,3 +20,11 @@ function Map() {
     </GoogleMap>
   );
 }
+
+
+
+
+            <div><Historical/></div>
+            <div id="title">
+              <a href={selectedPin.website}>VISIT</a>
+            </div>   
