@@ -7,8 +7,8 @@ import Historical from "./historical.js";
 
 const list =[ 
   { "id": "1",
-    "latitude": "51.041499834",
-    "longitude": "-114.05916643", 
+    "latitude": "51.0472",
+    "longitude": "-114.0652", 
     "title": "The Grand YYC",
     "desc1": "The Grand is situated on the land where the Bow River meets the Elbow River. The traditional Blackfoot name of this place is Mohkinstsis, which is also referred to as the City of Calgary. We honour and acknowledge Mohkinstsis and the traditional Treaty 7 territory and oral practices of the Blackfoot confederacy: Siksika, Kainai, Piikani as well as the Iyarhe Nakoda and Tsuut’ina nations who also call this place home.  We also acknowledge that this territory is home to the Métis Nation of Alberta, Region 3 within the historical Northwest Métis homeland.",
     "secondPage": ""
@@ -50,6 +50,7 @@ function Map() {
           }}
           onClick={() => {
             setSelectedPin(art);
+
           }}
         />
       ))}
