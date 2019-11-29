@@ -24,3 +24,27 @@
 .map{
   margin-left: 20%;
 }
+
+.historicalDiv {
+  min-height: auto;
+  min-width: auto;
+}
+
+.aboutCell {
+background: #FF512F;
+background: -webkit-linear-gradient(to right, #F09819, #FF512F);
+background: linear-gradient(to right, #F09819, #FF512F);
+}
+.aboutCell1 {
+  background: #FF512F;
+  background: -webkit-linear-gradient(to right, #F09819, #FF512F);
+  background: linear-gradient(to right, #F09819, #FF512F);
+  border-radius: 10%;
+  }
+.h2{
+  color:white;
+}
+.divHistorical{
+  min-width: 100%;
+  min-height: 100%;
+}

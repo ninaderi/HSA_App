@@ -3,7 +3,8 @@ import './App.css';
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from "react-google-maps";
 // import data from './data/publicArt.json'
 import Historical from "./historical.js";
-
+import { BrowserRouter as Router, Link} from 'react-router-dom';
+import Route from 'react-router-dom/Route';
 
 
 const list = [ 
@@ -12,7 +13,7 @@ const list = [
     "longitude": "-114.0652", 
     "title": "The Grand YYC",
     "desc1": "The Grand is situated on the land where the Bow River meets the Elbow River. The traditional Blackfoot name of this place is Mohkinstsis, which is also referred to as the City of Calgary. We honour and acknowledge Mohkinstsis and the traditional Treaty 7 territory and oral practices of the Blackfoot confederacy: Siksika, Kainai, Piikani as well as the Iyarhe Nakoda and Tsuut’ina nations who also call this place home.  We also acknowledge that this territory is home to the Métis Nation of Alberta, Region 3 within the historical Northwest Métis homeland.",
-    "secondPage":"https://www.thegrandyyc.ca/",
+    "secondPage": <Historical/>,
   },
 
   { "id": "2",
@@ -20,7 +21,7 @@ const list = [
     "longitude": "-114.077256",
     "title": "Lougheed House",
     "desc1":"Built in 1891 and originally known as 'Beaulieu', the French meaning 'beautiful place', Lougheed House is now a national historic site located in the Beltline district of Calgary, Alberta.",
-    "secondPage": "Will be updated",
+    "secondPage": "The content will be updated in the next phase",
   },
 
   { "id": "3",
@@ -28,36 +29,16 @@ const list = [
     "longitude": "-114.063159",
     "title": "Calgary Tower",
     "desc1": "The Calgary Tower is a 190.8-meter free standing observation tower in Downtown Calgary, Alberta, Canada. Originally called the Husky Tower, it was conceived as a joint venture between Marathon Realty Company Limited and Husky Oil as part of an urban renewal plan and to celebrate Canada's centennial of 1967.",
-    "secondPage": "https://www.calgarytower.com/",
+    "secondPage": "https://www.calgary.ca/CSPS/Recreation/Pages/Public-Art/Downtown-Gateway-LRT-Stations.aspx",
   },
 ]
 
 
-
 function Map() {
   const [selectedPin, setSelectedPin] = useState(null);
-   const [Grand,setGrand ] = useState("VISIT");
-   const handleChange =(e) => {
 
-     if(selectedPin.title=="The Grand YYC")
-          {
-            setGrand(
-              <div> <a href={selectedPin.secondPage}>VISIT</a></div>
-              )            
-          }
 
-        else if(selectedPin.title=="Lougheed House")
-              {  setGrand(<Historical/>)
-            
-              }
-            else if (selectedPin.title=="Calgary Tower")
-               {setGrand(<div> <a href={selectedPin.secondPage}>VISIT</a></div>)}
-             else
-              setGrand(null)
-   }
- 
   return (
-    <div>
     <GoogleMap 
       defaultZoom={14} 
       defaultCenter={{lat: 51.048615, lng: -114.070847}}
@@ -86,34 +67,26 @@ function Map() {
                 
             onCloseClick={() => {
               setSelectedPin(null);
-               setGrand("VISIT");
               
             }}
             >
           <div>
             <div>
               <h3>{selectedPin.title}</h3>
-              <p>{selectedPin.desc1}</p>                  
+              <h5>{selectedPin.desc1}</h5>                  
             </div>
-            
+
+
 
             <div id="title">
-              <button onClick={handleChange}>
-              {Grand}
-              </button>
+              <a href={selectedPin.secondPage}>VISIT</a>
 
-
-
-              
             </div>  
     
           </div>
         </InfoWindow>
       )}
     </GoogleMap>
-
-    </div>
-    
   )
 }
 
@@ -132,11 +105,3 @@ export default function App() {
     </div>
   );
 }
-
-
-              // <a href={selectedPin.secondPage}>VISIT</a>
-
-              // <button onClick={handleChange}>
-
-
-              // </button>
