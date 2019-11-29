@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Tabs,Tab,Grid,Cell,Chip} from 'react-mdl';
-import ReactPlayer from 'react-player';
-
+import ReactPlayer from 'react-player'
+import { Player, ControlBar } from 'video-react';
 
 class Showhistorical extends Component {
   constructor(props) {
@@ -9,23 +9,29 @@ class Showhistorical extends Component {
       this.state = {
           backgroundImage1: this.props.backgroundImage1,
           activeTab: 1,
-          url: 'https://www.youtube.com/watch?v=0vk5Rmo3E3E&t=4s',
+          url: this.props.video,
           pip: false,
           playing: false,
+          controls: false,
+         
       };
   }
-  
+
   handlePlay = () => {
     console.log('onPlay')
     this.setState(
       { activeTab: <div>
               <ReactPlayer
               id="myVid" height='auto' width='auto'
+              ref={this.player}
               className='react-player'
               width='100%'
               height='100%'
               url={this.state.url}
+              // pip={pip}
               playing={true}
+              // controls = 'true'
+            
               />
       <button onClick={this.handlePlay}> Play </button>
       <button onClick={this.handlePause}> Pause </button>
@@ -44,15 +50,18 @@ console.log(this.state.playing)
               width='100%'
               height='100%'
               url={this.state.url}
+              // pip={pip}
               playing={false}
+              
               />
       <button onClick={this.handlePlay}> Play </button>
       <button onClick={this.handlePause}> Pause </button>
       </div>});
     console.log(this.state.playing)
   }
-  
+
   handleChange = (tabId) => {
+    // const { url, playing, controls, light, volume, muted, loop, played, loaded, duration, playbackRate, pip } = this.state
     switch(tabId) {
       case 0:
         this.setState(
@@ -64,7 +73,9 @@ console.log(this.state.playing)
                   width='100%'
                   height='100%'
                   url={this.state.url}
+                  // pip={pip}
                   playing={this.state.playing}
+                  
                   />
           <button onClick={this.handlePlay}> Play </button>
           <button onClick={this.handlePause}> Pause </button>
@@ -72,12 +83,12 @@ console.log(this.state.playing)
           break;
           case 1:
                this.setState(
-                { activeTab: <div>
-                   </div>});
+                { activeTab: 'audio' });
                 break;
              case 2:
                  this.setState(
-                  { activeTab:<div style={{backgroundColor:'black'}}> <p style={{color:'white'}}>"Built in 1891 and originally known as Beaulieu, the French meaning beautiful place, Lougheed House is a national historic site located in the Beltline district of Calgary, Alberta. Lougheed House is operated by Lougheed House Conservation Society, an independent, non-profit society devoted to the restoration and public enjoyment of the historic house and its Gardens.Over its long history, Lougheed House has been a family residence, a training centre for young women,a women's military barracks and a blood donor clinic. Then, for many years, it sat empty — cared for, but unused until its restoration started in 2000."</p></div> });          break;
+                  { activeTab: 'read' });
+               break;
     }
   }
 
@@ -85,9 +96,9 @@ console.log(this.state.playing)
     const backImg=""+this.state.backgroundImage1+"";
     return(
         <div className='divHistorical' style={{backgroundColor:'black'}}>
-          <Grid style={{background:'black'}}>
+          <Grid style={{background:'black',alignItems:'center'}}>
                   <Cell col={10}><h2 style={{color:'white'}}> Welcome </h2></Cell>
-                
+                  
                     <h2 style={{color:'white', fontWeight:'bold'}}>{this.props.historicalName}</h2>
           </Grid>
           <div>
@@ -113,7 +124,7 @@ console.log(this.state.playing)
     )
   }
 }
-
 export default Showhistorical;
+
 
 // <Cell col={2} style={{color:'black'}}><Chip className="aboutCell1">back</Chip></Cell>
